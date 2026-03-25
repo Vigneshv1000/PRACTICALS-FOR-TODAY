@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    int nb,np,i,j;
+
+    printf("Enter number of blocks: ");
+    scanf("%d",&nb);
+    printf("Enter number of processes: ");
+    scanf("%d",&np);
+
+    int b[nb], p[np];
+
+    for(i=0;i<nb;i++){
+        printf("Block %d: ",i);
+        scanf("%d",&b[i]);
+    }
+
+    for(i=0;i<np;i++){
+        printf("Process %d: ",i);
+        scanf("%d",&p[i]);
+    }
+
+    for(i=0;i<np;i++){
+        for(j=0;j<nb;j++){
+            if(b[j]>=p[i]){
+                printf("P%d -> B%d\n",i,j);
+                b[j]-=p[i];
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
